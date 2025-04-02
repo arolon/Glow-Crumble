@@ -119,6 +119,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29742897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29742898}
+  m_Layer: 5
+  m_Name: 'end up '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &29742898
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29742897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1718344041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -224}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &61652469
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bakeButton: {fileID: 1972053368}
   moveSpeed: 3
+  messageText: {fileID: 2106729335}
+  breadSpawnScript: {fileID: 1718344044}
 --- !u!1 &71583010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1834,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698471803}
   m_CullTransparentMesh: 1
+--- !u!1 &714585556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714585557}
+  m_Layer: 5
+  m_Name: spawn position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &714585557
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714585556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1718344041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -514}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &732530794
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,6 +3890,7 @@ GameObject:
   - component: {fileID: 1718344037}
   - component: {fileID: 1718344042}
   - component: {fileID: 1718344043}
+  - component: {fileID: 1718344044}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3931,6 +4004,8 @@ RectTransform:
   - {fileID: 1972053371}
   - {fileID: 1425581852}
   - {fileID: 671085497}
+  - {fileID: 714585557}
+  - {fileID: 29742898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3953,6 +4028,7 @@ MonoBehaviour:
   bowl: {fileID: 61652469}
   spoon: {fileID: 540617420}
   messageText: {fileID: 2106729335}
+  mixText: {fileID: 1425581853}
   moveSpeed: 3
 --- !u!114 &1718344043
 MonoBehaviour:
@@ -3966,6 +4042,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41b4b7870bb5b4ca984e6bddbbeef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1718344044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718344036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2272d206a198fed4b909e53a95c28366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breadPrefab: {fileID: 6677405416303721586, guid: f30842db48bd8f446bf7ebaa7e4a6a2e, type: 3}
+  spawnPosition: {fileID: 714585557}
+  tablePosition: {fileID: 29742898}
+  moveSpeed: 2
+  messageText: {fileID: 2106729335}
 --- !u!1 &1738823786
 GameObject:
   m_ObjectHideFlags: 0

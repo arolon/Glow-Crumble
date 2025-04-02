@@ -19,7 +19,11 @@ MonoBehaviour:
     width: 1536
     height: 870
   m_ShowMode: 4
+<<<<<<< HEAD
   m_Title: Game
+=======
+  m_Title: Project
+>>>>>>> origin/DevPaniz
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +125,11 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 142
+=======
+  controlID: 159
+>>>>>>> origin/DevPaniz
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1066,9 +1074,15 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 4.07497, y: -12.341448, z: -10.125876}
     speed: 2
     m_Value: {x: 4.07497, y: -12.341448, z: -10.125876}
+=======
+    m_Target: {x: 340.73593, y: -4.0551476, z: 0.03512356}
+    speed: 2
+    m_Value: {x: 340.73593, y: -4.0551476, z: 0.03512356}
+>>>>>>> origin/DevPaniz
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1118,9 +1132,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 24.707525
     speed: 2
     m_Value: 24.707525
+=======
+    m_Target: 6.487698
+    speed: 2
+    m_Value: 6.487698
+>>>>>>> origin/DevPaniz
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1192,7 +1212,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: d8faffff
+=======
+      m_ExpandedIDs: aee7ffff34e9ffff62edffff40efffff92f1ffff2ef2ffff98f2fffff6f2ffff54f3ffff2cf5ffff4ea200005ea20000
+>>>>>>> origin/DevPaniz
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1299,7 +1323,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1317,7 +1342,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a6800000
     m_LastClickedID: 32934
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002499000026990000289900002a9900002c9900002e99000030990000329900003499000036990000389900003a990000
+=======
+    m_ExpandedIDs: 00000000fc98000086990000889900008a9900008c990000
+>>>>>>> origin/DevPaniz
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1346,7 +1375,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002499000026990000289900002a9900002c9900002e99000030990000329900003499000036990000389900003a990000
+=======
+    m_ExpandedIDs: 00000000fc98000086990000889900008a9900008c990000
+>>>>>>> origin/DevPaniz
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

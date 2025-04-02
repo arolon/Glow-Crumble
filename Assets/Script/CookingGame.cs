@@ -10,6 +10,7 @@ public class CookingGame : MonoBehaviour
     private bool ingredient1Added = false;
     private bool ingredient2Added = false;
     public TMP_Text messageText;
+    public TMP_Text mixText;
 
     // The speed of the spoon movement
     public float moveSpeed = 5f;
@@ -33,6 +34,7 @@ public class CookingGame : MonoBehaviour
         float speed = 2f; // Adjust for how fast the spoon moves
         float duration = 2f; // How long the mixing should last
         float elapsedTime = 0f;
+
 
         // Mixing animation
         while (elapsedTime < duration)
@@ -65,6 +67,9 @@ public class CookingGame : MonoBehaviour
         // Ensure the spoon is exactly at the initial position at the end
         spoon.transform.position = initialSpoonPosition;
         messageText.text = "Ready to bake!";
+        Destroy(spoon);
+        mixText.text = " ";
+
     }
 
     //private IEnumerator MoveSpoonToBowl()
