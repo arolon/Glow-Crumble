@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool nearCookingStation = false;
     public GameObject craftingUI;
+    public InventorySystem inventory;
 
     void Start()
     {
@@ -66,10 +68,17 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.tag);
         if (other.gameObject.name == "CookingStation") // Check GameObject name
         {
             nearCookingStation = true;
             Debug.Log("CLOSE CRAFTING");
+        }
+        if (other.CompareTag("Ingredient")) // Check if the tag matches the ingredient name
+        {
+            Debug.Log("Picked up: " + other.gameObject.name);
+            inventory.AddItem(other.gameObject.name); // Add to inventory
+            Destroy(other.gameObject); // Remove the ingredient from the scene
         }
     }
 

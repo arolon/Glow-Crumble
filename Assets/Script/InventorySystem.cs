@@ -11,23 +11,23 @@ public class InventorySystem : MonoBehaviour
     public void AddItem(string itemName)
     {
         inventoryItems.Add(itemName);
-        UpdateInventoryUI();
+        //UpdateInventoryUI();
     }
 
-    void UpdateInventoryUI()
-    {
-        foreach (Transform child in inventoryGrid)
-            Destroy(child.gameObject);
+    //void UpdateInventoryUI()
+    //{
+    //    foreach (Transform child in inventoryGrid)
+    //        Destroy(child.gameObject);
 
-        foreach (string item in inventoryItems)
-        {
-            GameObject slot = Instantiate(inventorySlotPrefab, inventoryGrid);
-            Image itemImage = slot.GetComponentInChildren<Image>();
-            // Set sprite dynamically based on item name or reference
-            itemImage.sprite = GetItemSprite(item);
-            slot.GetComponent<Button>().onClick.AddListener(() => DragItemToCookingArea(item));
-        }
-    }
+    //    foreach (string item in inventoryItems)
+    //    {
+    //        GameObject slot = Instantiate(inventorySlotPrefab, inventoryGrid);
+    //        Image itemImage = slot.GetComponentInChildren<Image>();
+    //        // Set sprite dynamically based on item name or reference
+    //        itemImage.sprite = GetItemSprite(item);
+    //        slot.GetComponent<Button>().onClick.AddListener(() => DragItemToCookingArea(item));
+    //    }
+    //}
 
     Sprite GetItemSprite(string itemName)
     {
