@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go for Bake
+  m_text: Press E to go bake
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1401,11 +1401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419473394693657143, guid: d327ea0fa07182c4995520c2cef1cffb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.63
+      value: -8.06
       objectReference: {fileID: 0}
     - target: {fileID: 1419473394693657143, guid: d327ea0fa07182c4995520c2cef1cffb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8300002
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 1419473394693657143, guid: d327ea0fa07182c4995520c2cef1cffb, type: 3}
       propertyPath: m_LocalPosition.z
