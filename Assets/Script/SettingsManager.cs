@@ -3,16 +3,15 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    public GameObject settingsPanel;  // The panel that will appear/disappear
+    public GameObject settingsPanel;
     public AudioSource musicSource;
     public Slider musicSlider;
     public Toggle muteToggle;
 
     void Start()
     {
-        settingsPanel.SetActive(false); // Ensure it's hidden at the start
+        settingsPanel.SetActive(false);
 
-        // Load saved settings
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             float savedVolume = PlayerPrefs.GetFloat("MusicVolume");
@@ -27,14 +26,14 @@ public class SettingsManager : MonoBehaviour
             musicSource.mute = isMuted;
         }
 
-        // Add listeners
+        
         musicSlider.onValueChanged.AddListener(SetVolume);
         muteToggle.onValueChanged.AddListener(SetMute);
     }
 
     public void OpenSettings()
     {
-        settingsPanel.SetActive(!settingsPanel.activeSelf); // Toggle the panel visibility
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
 
 
@@ -55,19 +54,17 @@ public class SettingsManager : MonoBehaviour
 
     public void SetMute(bool isMuted)
     {
-        // When muting, set the volume to 0, and unmute, set the volume to the current slider value
         if (isMuted)
         {
             musicSource.mute = true;
-            musicSource.volume = 0f;  // Set volume to 0 when muted
+            musicSource.volume = 0f;
         }
         else
         {
             musicSource.mute = false;
-            musicSource.volume = musicSlider.value; // Set volume to slider value when unmuted
+            musicSource.volume = musicSlider.value;
         }
 
-        // Save mute state
         PlayerPrefs.SetInt("IsMuted", isMuted ? 1 : 0);
         PlayerPrefs.Save();
     }

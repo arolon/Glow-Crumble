@@ -1,21 +1,25 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BreadSpawnScript : MonoBehaviour
 {
-    public GameObject breadPrefab;  // The bread prefab to spawn
-    public Transform spawnPosition; // Position where the bread will appear (above the bowl)
-    public Transform tablePosition; // Position where the bread will be placed (on the table)
-    public float moveSpeed = 2f;    // Speed at which the bread moves
+    public GameObject breadPrefab;
+    public Transform spawnPosition;
+    public Transform tablePosition;
+    public float moveSpeed = 2f;
     public TMP_Text messageText;
+    public string winSceneName = "WinScene";
+    public Button serveButton;
+    //public AudioClip audioClip;
 
-    private bool breadIsSpawned = false; // Flag to prevent multiple spawnings
+    private bool breadIsSpawned = false;
 
     void Start()
     {
-        // Ensure the breadPrefab is linked in the Inspector
+        serveButton.gameObject.SetActive(false);
         if (breadPrefab == null || spawnPosition == null || tablePosition == null)
         {
             Debug.LogError("Please assign all references in the Inspector.");
@@ -25,27 +29,36 @@ public class BreadSpawnScript : MonoBehaviour
 
     public void StartBaking()
     {
-        if (breadIsSpawned) return;  // Prevent spawning if the bread is already on the scene
+        if (breadIsSpawned) return; 
 
-        StartCoroutine(SpawnBreadAfterDelay(2f));  // Wait for 10 seconds
+        StartCoroutine(SpawnBreadAfterDelay(2f));
     }
 
     private IEnumerator SpawnBreadAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // Wait for the specified delay
+        yield return new WaitForSeconds(delay);
 
-        // Instantiate the bread at the spawn position
         GameObject bread = Instantiate(breadPrefab, spawnPosition.position, Quaternion.identity);
         breadIsSpawned = true;
 
-        // Move the bread to the table position
         while (Vector3.Distance(bread.transform.position, tablePosition.position) > 0.1f)
         {
             bread.transform.position = Vector3.MoveTowards(bread.transform.position, tablePosition.position, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
-        bread.transform.position = tablePosition.position;  // Ensure it reaches the table position
+        bread.transform.position = tablePosition.position;
         messageText.text = "Your bread is ready!";
+        serveButton.gameObject.SetActive(true);
+        //ServeOrder();
+        //yield return new WaitForSeconds(2f);
+
+        //SceneManager.LoadScene(winSceneName);
+    }
+    public void ServeOrder()
+    {
+        
+        
+        SceneManager.LoadScene(winSceneName);
     }
 }

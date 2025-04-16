@@ -4,14 +4,10 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
+    public AudioSource audioSource;
+    public AudioClip backgroundMusic;
 
-   public AudioSource audioSource;
-    public AudioClip startSceneMusic;
-    public AudioClip gameSceneMusic; // This will also play in PlayScene
-
-    private string currentScene;
-
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -25,38 +21,27 @@ public class MusicManager : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
-        PlayStartSceneMusic();
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = backgroundMusic;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        currentScene = scene.name;
-
-        if (currentScene == "GameScene" || currentScene == "PlayScene")
+        if (scene.name == "WinScene")
         {
-            PlayGameSceneMusic();
+            StopMusic();
         }
     }
 
-    void PlayStartSceneMusic()
+    public void StopMusic()
     {
-        if (audioSource.clip != startSceneMusic)
-        {
-            audioSource.clip = startSceneMusic;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
-    }
-
-    void PlayGameSceneMusic()
-    {
-        if (audioSource.clip != gameSceneMusic)
-        {
-            audioSource.clip = gameSceneMusic;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
+        
+        Destroy(gameObject);
     }
 }
