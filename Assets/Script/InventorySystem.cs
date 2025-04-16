@@ -25,14 +25,14 @@ public class InventorySystem : MonoBehaviour
             }
         }
 
-        UpdateInventoryUI();
+        //UpdateInventoryUI();
     }
 
     public void AddItem(string itemName)
     {
         inventoryItems.Add(itemName);
         Debug.Log("Added " + itemName + " to inventory");
-        UpdateInventoryUI();
+        //UpdateInventoryUI();
     }
 
     public void RemoveItem(string itemName)
@@ -40,7 +40,7 @@ public class InventorySystem : MonoBehaviour
         if (inventoryItems.Contains(itemName))
         {
             inventoryItems.Remove(itemName);
-            UpdateInventoryUI();
+            //UpdateInventoryUI();
         }
     }
 

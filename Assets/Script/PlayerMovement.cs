@@ -100,12 +100,13 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("CookingStation")) 
-        {
-            nearCookingStation = true;
-            ShowMessage("Press E to cook");
-        }
-        else if (other.gameObject.CompareTag("Exit"))
+        //if (other.gameObject.CompareTag("CookingStation")) 
+        //{
+        //    nearCookingStation = true;
+        //    ShowMessage("Press E to cook");
+        //}
+        //else 
+        if (other.gameObject.CompareTag("Exit"))
         {
             nearExit = true;
             ShowMessage("Press E to exit");
@@ -126,11 +127,12 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("CookingStation"))
-        {
-            nearCookingStation = false;
-        }
-        else if (other.gameObject.CompareTag("Exit"))
+        //if (other.gameObject.CompareTag("CookingStation"))
+        //{
+        //    nearCookingStation = false;
+        //}
+        //else 
+        if (other.gameObject.CompareTag("Exit"))
         {
             nearExit = false;
         }
