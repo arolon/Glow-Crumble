@@ -6,11 +6,11 @@ using TMPro;
 public class Interaction : MonoBehaviour
 {
     public string npcName;
-    public string recipeName; // The recipe this NPC teaches
-    public List<string> npcDialogue; // List of dialogues
-    public string requiredItem; // Item required before teaching the recipe
-    public GameObject interactionPromptPrefab; // Prefab for interaction prompt
-    public GameObject notificationPrefab; // Prefab for notification
+    public string recipeName;
+    public List<string> npcDialogue;
+    public string requiredItem;
+    public GameObject interactionPromptPrefab; 
+    public GameObject notificationPrefab;
     private GameObject interactionPromptInstance;
     private GameObject notificationInstance;
     private bool playerNearby = false;

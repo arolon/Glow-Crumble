@@ -69,38 +69,33 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.tag);
-        if (other.gameObject.name == "CookingStation") // Check GameObject name
+        if (other.gameObject.name == "CookingStation") 
         {
             nearCookingStation = true;
             Debug.Log("CLOSE CRAFTING");
         }
-        if (other.CompareTag("Ingredient")) // Check if the tag matches the ingredient name
+        if (other.CompareTag("Ingredient")) 
         {
             Debug.Log("Picked up: " + other.gameObject.name);
-            inventory.AddItem(other.gameObject.name); // Add to inventory
-            Destroy(other.gameObject); // Remove the ingredient from the scene
+            inventory.AddItem(other.gameObject.name);
+            Destroy(other.gameObject); 
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "CookingStation") // Check GameObject name
+        if (other.gameObject.name == "CookingStation")
         {
             nearCookingStation = false;
-            /*craftingUI.SetActive(false);*/ // Close UI when leaving the station
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Exit") // Ensure only the player triggers it
+        if (collision.gameObject.name == "Exit") 
         {
             SceneManager.LoadScene("PlayScene");
         }
     }
 
-    //void ToggleCraftingUI()
-    //{
-    //    craftingUI.SetActive(!craftingUI.activeSelf);
-    //}
 }
