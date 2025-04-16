@@ -21,7 +21,7 @@ public class CookingGame : MonoBehaviour
     }
 
 
-    private Vector3 initialSpoonPosition; //To store the initial position of the spoon
+    private Vector3 initialSpoonPosition; 
 
     private IEnumerator MoveSpoonToBowl()
     {
@@ -34,15 +34,15 @@ public class CookingGame : MonoBehaviour
         float elapsedTime = 0f;
 
 
-        // Mixing animation
+        
         while (elapsedTime < duration)
         {
             float angle = elapsedTime * speed * Mathf.PI * 2;
 
-            //small offset to the x position to move the spoon a little to the right
-            float x = center.x + Mathf.Cos(angle) * radius + 0.5f; //0.5f is the rightward offset, adjust as needed
+            
+            float x = center.x + Mathf.Cos(angle) * radius + 0.5f; 
 
-            //additional offset to the y position to move the spoon upwards
+            
             float y = center.y + Mathf.Sin(angle) * radius + 1f;
 
             spoon.transform.position = new Vector3(x, y, spoon.transform.position.z);

@@ -8,76 +8,115 @@ public class InventorySystem : MonoBehaviour
 
     public GameObject inventorySlotPrefab;
     public Transform inventoryGrid;
+    public List<string> inventoryItems = new List<string>();
+    
+    public List<Sprite> itemSprites = new List<Sprite>();
+    public List<string> itemNames = new List<string>();
+    
+    private Dictionary<string, Sprite> itemDictionary = new Dictionary<string, Sprite>();
 
-    // Dictionary to hold items and their quantities
-    public Dictionary<string, int> inventoryItems = new Dictionary<string, int>();
-
-    void Awake()
+    void Start()
     {
-        if (Instance != null && Instance != this)
+        for (int i = 0; i < Mathf.Min(itemNames.Count, itemSprites.Count); i++)
         {
-            Destroy(gameObject);
-            return;
+            if (!string.IsNullOrEmpty(itemNames[i]) && itemSprites[i] != null)
+            {
+                itemDictionary[itemNames[i]] = itemSprites[i];
+            }
         }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        UpdateInventoryUI();
     }
 
-    public void AddItem(string rawItemName)
+    public void AddItem(string itemName)
     {
-        string normalizedItemName = NormalizeItemName(rawItemName);
-
-        if (inventoryItems.ContainsKey(normalizedItemName))
-            inventoryItems[normalizedItemName]++;
-        else
-            inventoryItems[normalizedItemName] = 1;
-
-        //UpdateInventoryUI();
+        inventoryItems.Add(itemName);
+        Debug.Log("Added " + itemName + " to inventory");
+        UpdateInventoryUI();
     }
 
-    string NormalizeItemName(string itemName)
+    public void RemoveItem(string itemName)
     {
-        int parenIndex = itemName.IndexOf(" (");
-        return parenIndex > -1 ? itemName.Substring(0, parenIndex) : itemName;
+        if (inventoryItems.Contains(itemName))
+        {
+            inventoryItems.Remove(itemName);
+            UpdateInventoryUI();
+        }
     }
 
-    // Check if the inventory has at least one of the item
-    public bool HasItem(string rawItemName)
+    void UpdateInventoryUI()
     {
-        string normalized = NormalizeItemName(rawItemName);
-        return inventoryItems.ContainsKey(normalized) && inventoryItems[normalized] > 0;
+
+        foreach (Transform child in inventoryGrid)
+        {
+            Destroy(child.gameObject);
+        }
+
+
+        foreach (string item in inventoryItems)
+        {
+            GameObject slot = Instantiate(inventorySlotPrefab, inventoryGrid);
+            
+  
+            Image itemImage = slot.GetComponentInChildren<Image>();
+            if (itemImage != null)
+            {
+                itemImage.sprite = GetItemSprite(item);
+            }
+            
+
+            Text itemText = slot.GetComponentInChildren<Text>();
+            if (itemText != null)
+            {
+                itemText.text = item;
+            }
+            
+            Button button = slot.GetComponent<Button>();
+            if (button != null)
+            {
+                string itemName = item; 
+                button.onClick.AddListener(() => UseItem(itemName));
+            }
+        }
     }
 
-    // Check if the inventory has a specific quantity of the item
-    public bool HasItem(string rawItemName, int requiredAmount)
+    Sprite GetItemSprite(string itemName)
     {
-        string normalized = NormalizeItemName(rawItemName);
-        return inventoryItems.ContainsKey(normalized) && inventoryItems[normalized] >= requiredAmount;
+        if (itemDictionary.ContainsKey(itemName))
+        {
+            return itemDictionary[itemName];
+        }
+        
+        Sprite sprite = Resources.Load<Sprite>("Sprites/" + itemName);
+        
+        
+        if (sprite == null)
+        {
+            sprite = Resources.Load<Sprite>("Sprites/DefaultItem");
+            Debug.LogWarning("Could not find sprite for " + itemName);
+        }
+        
+        return sprite;
     }
 
-    // Optional: Remove a specific quantity of an item
-    public bool RemoveItem(string rawItemName, int amount)
+    void UseItem(string itemName)
     {
-        string normalized = NormalizeItemName(rawItemName);
-
-        if (!inventoryItems.ContainsKey(normalized) || inventoryItems[normalized] < amount)
-            return false;
-
-        inventoryItems[normalized] -= amount;
-
-        if (inventoryItems[normalized] <= 0)
-            inventoryItems.Remove(normalized);
-
-        //UpdateInventoryUI();
-        return true;
+        Debug.Log("Using item: " + itemName);
+        
+        CookingStation cookingStation = FindObjectOfType<CookingStation>();
+        if (cookingStation != null)
+        {
+            cookingStation.AddIngredient(itemName);
+        }
     }
-
-    // Optional: Get current count of an item
-    public int GetItemCount(string rawItemName)
+    
+    public bool HasAnyItems()
     {
-        string normalized = NormalizeItemName(rawItemName);
-        return inventoryItems.ContainsKey(normalized) ? inventoryItems[normalized] : 0;
+        return inventoryItems.Count > 0;
     }
-
+    
+    public bool HasItem(string itemName)
+    {
+        return inventoryItems.Contains(itemName);
+    }
 }
